@@ -1,0 +1,25 @@
+{
+  "name": "roadtoweb3",
+  "version": "1.0.0",
+  "description": "Road To Web3 Hackathon submission",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaStinju/RoadtoWeb3.git"
+  },
+  "author": "Simran Thind, Will Harris, Justin Chan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaStinju/RoadtoWeb3/issues"
+  },
+  "homepage": "https://github.com/kaStinju/RoadtoWeb3#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.8.0"
+  }
+}

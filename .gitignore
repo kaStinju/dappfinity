@@ -1,6 +1,9 @@
 # dependencies
 /node_modules
 
+# other files
+.env
+
 # logs
 npm-debug.log*
 .eslintcache

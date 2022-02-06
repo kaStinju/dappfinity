@@ -233,6 +233,7 @@
         {
           "internalType": "uint256",
           "name": "amount",
+          "decimals": 18,
           "type": "uint256"
         }
       ],

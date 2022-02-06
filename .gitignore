@@ -7,3 +7,6 @@
 # logs
 npm-debug.log*
 .eslintcache
+
+# .DS_Store
+.DS_Store

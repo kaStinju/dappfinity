@@ -24,9 +24,14 @@
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "ethers": "^5.5.4",
+    "qrcode": "^1.5.0",
+    "web3": "^1.7.0",
+    "@walletconnect/web3-provider": "^1.7.1"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.4.2",
     "eslint": "^8.8.0"
   }
 }

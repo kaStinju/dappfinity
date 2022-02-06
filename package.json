@@ -2,9 +2,11 @@
   "name": "roadtoweb3",
   "version": "1.0.0",
   "description": "Road To Web3 Hackathon submission",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "build": "rimraf ./build && tsc"
   },
   "repository": {
     "type": "git",
@@ -17,11 +19,16 @@
   },
   "homepage": "https://github.com/kaStinju/RoadtoWeb3#readme",
   "dependencies": {
-    "@walletconnect/web3-provider": "^1.7.1",
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "typescript": "^4.5.5",
     "ethers": "^5.5.4",
     "qrcode": "^1.5.0",
-    "web3": "^1.7.0"
+    "web3": "^1.7.0",
+    "@walletconnect/web3-provider": "^1.7.1"
   },
   "devDependencies": {
     "@types/qrcode": "^1.4.2",

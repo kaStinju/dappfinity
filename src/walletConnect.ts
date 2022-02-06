@@ -6,6 +6,9 @@ export async function connect(handleUri: (uri: string) => void) {
   const provider = new WalletConnectProvider({
     infuraId: "27e484dcd9e3efcfd25a83a78777cdf1",
     qrcode: false,
+    rpc: {
+      80001: "https://rpc-mumbai.maticvigil.com/"
+    }
   });
 
   provider.connector.on("display_uri", (err, payload) => {
@@ -17,5 +20,5 @@ export async function connect(handleUri: (uri: string) => void) {
   await provider.enable();
 
   //  Wrap with Web3Provider from ethers.js
-  return new providers.Web3Provider(provider);
+  return (new providers.Web3Provider(provider)).getSigner();
 }

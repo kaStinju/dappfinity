@@ -87,7 +87,7 @@ class ContextualizedFunction extends Function {
       throw new Error("must be pure or view");
     }
     const contract = baseContract.connect(provider);
-    return await contract.functions[this.fragment.name](this.params);
+    return await contract.functions[this.fragment.name](...this.params);
   }
 
   async callMethod(signer: ethers.Signer): Promise<TransactionResponse> {
@@ -95,7 +95,7 @@ class ContextualizedFunction extends Function {
       throw new Error("must be nonpayable or payable");
     }
     const contract = baseContract.connect(signer);
-    return await contract[this.fragment.name](this.params);
+    return await contract[this.fragment.name](...this.params);
   }
 }
 
@@ -103,7 +103,7 @@ const functionMap: { [key: string]: Function } = {};
 
 let baseContract: Contract;
 
-export function init() {
+export function initFunctions() {
   const { contractConfig: { address, abi } } = config();
   abi.filter(({ type }) => type === "function").forEach((fragment) => {
     const func = new Function(fragment as AnnotatedFunctionFragment);

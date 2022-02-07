@@ -3,7 +3,6 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import type {
   FunctionFragment,
   ParamType,
-  Result,
 } from "ethers/lib/utils";
 import type { APIApplicationCommand }  from "discord-api-types/v9";
 import type { CommandInteraction } from "discord.js";
@@ -11,11 +10,17 @@ import { config } from "./config";
 import { TransactionResponse } from "@ethersproject/abstract-provider";
 
 interface AnnotatedFunctionFragment extends Omit<FunctionFragment, "inputs"> {
-  inputs: AnnotatedParamType[];
+  inputs: AnnotatedInputType[];
+  outputs?: AnnotatedOutputType[];
 }
 
-interface AnnotatedParamType extends ParamType {
+interface AnnotatedInputType extends ParamType {
   decimals?: number;
+}
+
+interface AnnotatedOutputType extends ParamType {
+  decimals?: number;
+  precision?: number;
 }
 
 class Function {
@@ -82,12 +87,31 @@ class ContextualizedFunction extends Function {
     return new ContextualizedFunction(func.fragment, params);
   }
 
-  async callView(provider: ethers.providers.JsonRpcProvider): Promise<Result> {
+  async callView(provider: ethers.providers.JsonRpcProvider) {
     if (!this.isView()) {
       throw new Error("must be pure or view");
     }
     const contract = baseContract.connect(provider);
-    return await contract.functions[this.fragment.name](...this.params);
+    if (!this.fragment.outputs) {
+      return [];
+    }
+    this.fragment.outputs
+    const result = await contract.functions[this.fragment.name](...this.params);
+    return this.fragment.outputs.map((output, i) => {
+      const value = result[i];
+      if (output.decimals) {
+        if (output.precision) {
+          return ethers.utils.formatUnits(
+            (value as BigNumber)
+              .div(BigNumber.from(10).pow(output.decimals - output.precision))
+              .toString(),
+            output.precision,
+          );
+        }
+        return ethers.utils.formatUnits(value, output.decimals);
+      }
+      return value;
+    });
   }
 
   async callMethod(signer: ethers.Signer): Promise<TransactionResponse> {

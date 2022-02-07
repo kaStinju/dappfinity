@@ -1,13 +1,15 @@
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { providers } from "ethers";
+import { config } from "./config";
 
 export async function connect(handleUri: (uri: string) => void) {
   //  Create WalletConnect Provider
+  const { chainConfig } = config();
   const provider = new WalletConnectProvider({
     infuraId: "27e484dcd9e3efcfd25a83a78777cdf1",
     qrcode: false,
     rpc: {
-      80001: "https://rpc-mumbai.maticvigil.com/"
+      [chainConfig.chainId]: chainConfig.rpcUrl,
     }
   });
 

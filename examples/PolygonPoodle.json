@@ -73,7 +73,9 @@
       "outputs": [
         {
           "internalType": "uint256",
+          "precision": 2,
           "name": "",
+          "decimals": 18,
           "type": "uint256"
         }
       ],
@@ -90,6 +92,7 @@
         {
           "internalType": "uint256",
           "name": "amount",
+          "decimals": 18,
           "type": "uint256"
         }
       ],
@@ -117,6 +120,8 @@
         {
           "internalType": "uint256",
           "name": "",
+          "decimals": 18,
+          "precision": 2,
           "type": "uint256"
         }
       ],
@@ -146,6 +151,7 @@
         {
           "internalType": "uint256",
           "name": "subtractedValue",
+          "decimals": 18,
           "type": "uint256"
         }
       ],
@@ -169,6 +175,7 @@
         },
         {
           "internalType": "uint256",
+          "decimals": 18,
           "name": "addedValue",
           "type": "uint256"
         }
@@ -216,6 +223,8 @@
       "outputs": [
         {
           "internalType": "uint256",
+          "decimals": 18,
+          "precision": 2,
           "name": "",
           "type": "uint256"
         }
@@ -263,6 +272,7 @@
         {
           "internalType": "uint256",
           "name": "amount",
+          "decimals": 18,
           "type": "uint256"
         }
       ],

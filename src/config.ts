@@ -12,10 +12,26 @@ export interface ContractConfig {
   address: string;
 };
 
+export interface ChainConfig {
+  name: string;
+  rpcUrl: string;
+  explorerUrl: string;
+  chainId: number;
+}
+
 export interface Config {
   contractConfig: ContractConfig;
+  chainConfig: ChainConfig;
 }
 
 export function config(): Config {
-  return { contractConfig };
+  return {
+    contractConfig,
+    chainConfig: {
+      name: "Polygon Testnet",
+      rpcUrl: "https://rpc-mumbai.maticvigil.com/",
+      explorerUrl: "https://mumbai.polygonscan.com/",
+      chainId: 80001,
+    },
+  };
 }

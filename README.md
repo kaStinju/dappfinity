@@ -1,1 +1,2 @@
-# RoadtoWeb3
+# Dappfinity
+### Make your smart contracts Discord command compatible
